@@ -1,0 +1,171 @@
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto";
+  font-style: bold;
+  font-weight: 900;
+  src: url("../font/Roboto/Roboto-Black.ttf");
+}
+
+h1#logo {
+  font-family: "Roboto", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.8125rem, 0.62801rem + 8.962vw, 8.75rem);
+  line-height: 1.4em;
+  text-shadow: 2px 2px rgb(10, 62, 250);
+}
+
+@media screen and (max-width:1600px) {
+  div#content{
+    height:83vh;
+  }
+} 
+@media screen and (max-width:500px) {
+  div#content{
+    height:45vh;
+    overflow: scroll;
+  }
+}
+
+
+
+div#container-login {
+  width: 50%;
+  margin-left: 30%;
+  padding-top: 10%;
+}
+#box {
+  width: 40%;
+  margin: auto;
+  padding-top: 17%;
+}
+
+html {
+  height: 100%;
+}
+body#start-page {
+  background-color: #fbe1f3;
+  text-align: center;
+}
+
+#myForm {
+  display: none;
+  position: fixed;
+  top: 20%;
+  left: 25%;
+  border-radius: 25px;
+  z-index: 2;
+  background-color: white;
+  padding: 5%;
+  border: 3px solid #f1f1f1;
+}
+
+#nav_menu {
+  position: fixed;
+  top: 0%;
+  right: 0%;
+  z-index: 2;
+}
+
+@media screen and (max-width:1600px) {
+  #tableCat{
+    padding: 6% 10%;
+  }
+} 
+@media screen and (max-width:500px) {
+  #tableCat{
+    padding: 10% 7%;
+  }
+}
+.nav-item{
+  padding-right: 0.5%;
+}
+
+#btn_table {
+  background-color: #ebe76c;
+  width: calc(23vmin);
+  height: calc(21vmin);
+  font-size: calc(2.5vmin + 0.3rem);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+#btn_table2 {
+  background-color: #d8d9da;
+  width: calc(23vmin);
+  height: calc(21vmin);
+  font-size: calc(2.5vmin + 0.4rem);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
+
+#product_btn:hover {
+  background-color: #61677a;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#btn_table:hover {
+  background-color: #2ee59d;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#btn_table2:hover {
+  background-color: #61677a;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+#btn-paid {
+  background-color: #127507;
+  border: 3px solid;
+  font-size: 1.3em;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 20px;
+  /* position: absolute;
+  right: 50px;
+  bottom: 60px;*/
+}
+
+#btn-paid:hover {
+  background-color: #a4d0a4;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: #000000;
+  transform: translateY(-7px);
+}
+
+#btn-items {
+  background-color: #ffd95a;
+  width: calc(20vmin);
+  height: calc(19vmin);
+  font-size: calc(2.5vmin + 0.4rem);
+  border: 3px solid;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+#btn-items:hover {
+  background-color: #fff7d4;
+  box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+  color: #000000;
+  transform: translateY(-7px);
+}
+
+#btn-logo {
+  border: 3px solid;
+  font-size: 1.4em;
+  box-shadow: 4px 4px 0px rgb(10, 62, 250);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+}
