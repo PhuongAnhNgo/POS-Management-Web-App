@@ -2,21 +2,23 @@
   //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+  
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   session_start();
   if(!isset( $_SESSION['benutzer_id'])){
     //Wenn nicht eingeloggt dann muss erstmal einloggen
     header("Location:index.php");
   } 
 
+  include("partials/header.php");
+  include("partials/sidebar.php");
+
   include("db_connect.php");
 
   if(isset($_POST['table_num'])){
     $table_num = $_POST['table_num'];
-   
-    //SQL-Injection verhindern
     $table_num = mysqli_real_escape_string($connect, $table_num);
-
-    //2. SQL-Statement ausführen
     $sql = "SELECT id
             FROM orders
             where table_num = '$table_num'
@@ -24,7 +26,6 @@
     $results = mysqli_query($connect, $sql);
 
     if(!$results) {
-        //SQL-Fehler ausgeben
       die("<p style=\"color:red\">" . mysqli_error($connect) . "</p>");
     }  
     else{
@@ -33,8 +34,6 @@
             echo '<script>alert("Invalid! Table is already in use")</script>';
         }
         else{
-            //$_SESSION['table_num']= $table_num;
-            //header("Location: order.php");
             $datum = date('Y-m-d H:i:s');
             
             $sql = "INSERT orders
@@ -45,7 +44,6 @@
             $res = mysqli_query($connect, $sql);
 
             if(!$res) {
-                //SQL-Fehler ausgeben
               die("<p style=\"color:red\">" . mysqli_error($connect) . "</p>");
             }  
             else{
@@ -54,18 +52,11 @@
             }
     
         }    
-    } 
-
-    
-  }
-  
-  include("partials/header.php");
-  include("partials/sidebar.php");
-
-  
+    }  
+  }  
 ?>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     
@@ -113,8 +104,7 @@
 
 </div>
 
-<!-- /////////////////////////////////////////////////////// -->
-
+<!-- ///////////    FOOTER    //////////// -->
 <?php
     include("partials/footer.php");
 ?>
