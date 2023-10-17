@@ -2,13 +2,15 @@
   //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   session_start();
   if(!isset( $_SESSION['benutzer_id'])){
     //Checking if user has already logged in or not
     header("Location:index.php");
   } 
 
-  include("db_connect.php");
+  include("db_connect.php"); //connect to database
   
   include("partials/header.php");
   include("partials/sidebar.php");
@@ -54,8 +56,9 @@
   }  
 ?>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
 
+<!--    Formular to add new category   -->
   <div class="row px-5 py-5 my-4 ">
     <!-- -- Start Menu Page-- -->
     <div id="content" class = "col-md-5 border border-dark py-3  m-3 rounded" >
@@ -161,11 +164,6 @@
     <!-- -- End See Details Page-- -->
   </div>
   
-
-
-
-<!-- /////////////////////////////////////////////////////// -->
-
 <!-- ___________________________________________________
                             FOOTER-CONTAINER 
           ___________________________________________________ -->
