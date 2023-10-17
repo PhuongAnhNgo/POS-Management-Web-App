@@ -2,15 +2,16 @@
   //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   session_start();
   if(!isset( $_SESSION['benutzer_id'])){
-    //Wenn nicht eingeloggt dann muss erstmal einloggen
     header("Location:index.php");
   } 
   include("partials/header.php");
   include("partials/sidebar.php");
 
-  include("db_connect.php");
+  include("db_connect.php"); //connect to database
   
   if( $_SESSION['type'] == 2){
     //Not admin => not allow to manage users
@@ -78,7 +79,9 @@
   
 ?>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
+
+<!--    Table of users and action buttons   -->
 <div class="container-fluid pt-5 px-5 mt-5">
 <div class="card">
 					<div class="card-header row justify-content-between">
