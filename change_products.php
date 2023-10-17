@@ -2,6 +2,9 @@
  //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   session_start();
   if(!isset( $_SESSION['benutzer_id'])){
 
@@ -10,19 +13,20 @@
   include("partials/header.php");
   include("partials/sidebar.php");
 
-  include("db_connect.php");
+  include("db_connect.php"); //connect to database
 
-  $alert ="";
-  $change_item_id = $_POST['change_item_id'];
+  $alert =""; //To return alert when error occurs
+  $change_item_id = $_POST['change_item_id']; //Product's id sent from /menu.php
   $change_item_id = mysqli_real_escape_string($connect, $change_item_id);
 
-  //Old informations
+  //Get old informations to show in formular
   $sql1 = "SELECT *
                 FROM products
                 WHERE id = '$change_item_id'";
   $infos = mysqli_query($connect, $sql1);
   $prod = mysqli_fetch_assoc($infos);
 
+  //Once formular is fully filled and submit => send update request to database
   if( isset($_POST['category_id']) && isset($_POST['name'])
         && isset($_POST['description']) && isset($_POST['price']) && isset($_POST['stock']) ){
        
@@ -62,7 +66,9 @@
     
 ?>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
+
+<!--    Formular to change product's infos   -->
 <div class="container-fluid p-5 mt-5">
 <H2 class="py-3">Change products's informations:</H2>
   <form action="change_products.php" method="post" class="form-container" style="width:50%;">
@@ -115,12 +121,7 @@
         echo "<p style=\"color:blue\"><i class=\"fa-solid fa-circle-check fa-beat fa-xl\" style=\"color: #006f1a;\"></i> $alert</p>"; ?>
 </div>
 
-
-
-
-
-<!-- /////////////////////////////////////////////////////// -->
-
+<!-- ///////////    FOOTER    //////////// -->
 <?php
     include("partials/footer.php");
 ?>
