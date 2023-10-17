@@ -2,6 +2,9 @@
  //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+  
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   session_start();
   if(!isset( $_SESSION['benutzer_id'])){
     header("Location:index.php");
@@ -9,31 +12,29 @@
   include("partials/header.php");
   include("partials/sidebar.php");
 
-  include("db_connect.php");
+  include("db_connect.php"); //connect to database
 
-  $alert ="";
-  $change_item_id = $_POST['change_item_id'];
+  $alert =""; //To return alert when error occurs
+
+  $change_item_id = $_POST['change_item_id']; // Receive from page: /categories.php
   $change_item_id = mysqli_real_escape_string($connect, $change_item_id);
 
-  //Old informations
+  //Get old informations
   $sql1 = "SELECT *
             FROM categories
             WHERE id = '$change_item_id'";
     $infos = mysqli_query($connect, $sql1);
     $prod = mysqli_fetch_assoc($infos);
 
+  //Once formular is fully filled and submit => send update request to database
     if( isset($_POST['category']) && isset($_POST['description']) ){
         $category = $_POST['category'];
         $description = $_POST['description'];
-        
-        
-       
+          
     //SQL-Injection verhindern
     $category = mysqli_real_escape_string($connect, $category);
     $description = mysqli_real_escape_string($connect, $description);
     
-    
-
     //2. SQL-Statement ausführen
     $sql = "UPDATE categories 
             SET name ='$category',
@@ -53,7 +54,9 @@
     
 ?>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
+
+<!--    Formular to change a category's details   -->
 <div class="container-fluid p-5 mt-5">
 <H2 class="py-3">Change category's informations:</H2>
     <form action="change_category.php" method="post" class="form-container" style="width:50%;">
@@ -77,11 +80,7 @@
               echo "<p style=\"color:blue\"><i class=\"fa-solid fa-circle-check fa-beat fa-xl\" style=\"color: #006f1a;\"></i> $alert</p>"; ?>
 </div>
 
-
-
-
-<!-- /////////////////////////////////////////////////////// -->
-
+<!-- ///////////    FOOTER    //////////// -->
 <?php
     include("partials/footer.php");
 ?>
