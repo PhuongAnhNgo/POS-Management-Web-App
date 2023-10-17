@@ -2,14 +2,20 @@
   //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   session_start();
   if(!isset( $_SESSION['benutzer_id'])){
     
     header("Location:index.php");
   } 
-  include("db_connect.php");
+  include("db_connect.php"); //connect to database
 
+  include("partials/header.php");
+  include("partials/sidebar.php");
  
+  //Once delete button is clicked => get item's id and a´make database request (delete)
   if( isset($_POST['del_item']) ){
     $id = $_POST['del_item'];
    
@@ -27,14 +33,11 @@
         header("Refresh:0");
     } 
   }
-
-  include("partials/header.php");
-  include("partials/sidebar.php");
-
-  
 ?>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
+
+<!--    Tables of categories   -->
 <div id="tableCat" class="container-fluid my-5">
 <div class="card">
 					<div class="card-header row justify-content-between">
@@ -65,7 +68,7 @@
 									<td class=""><?php echo $row['name'] ?></td>
 									<td><?php echo $row['description'] ?></td>
 									<td class="text-left">
-                  <form action="change_category.php" method="post" >
+                  <form action="change_category.php" method="post" > <!-- Move to other page to change category's details -->
                       <button class="btn btn-sm btn-primary" type="submit" name="change_item_id" value="<?php echo $row['id']?>"><i class="fa-solid fa-pen-to-square"></i></button>
                   </form>
                      
@@ -74,9 +77,7 @@
                       <button class="btn btn-sm btn-danger" type="submit" name="del_item" value="<?php echo $row['id']?>"><i class="fa fa-trash-alt"></i></button>
                   </form>
                   		</td>
-								</tr>
-                
-								
+								</tr>		
 								<?php endwhile; ?>
 							</tbody>
 						</table>
@@ -86,7 +87,7 @@
 
 </div>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- ///////////    FOOTER    //////////// -->
 
 <?php
     include("partials/footer.php");
