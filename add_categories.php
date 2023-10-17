@@ -2,15 +2,22 @@
   //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   session_start();
   if(!isset( $_SESSION['benutzer_id'])){
     header("Location:index.php");
   } 
 
-  include("db_connect.php");
+  include("partials/header.php");
+  include("partials/sidebar.php");
 
-  $alert = "";
+  include("db_connect.php"); //connect to database
 
+  $alert = ""; //To return alert when error occurs
+
+  //Once formular is fully filled and submit => send request (add new data) to database
   if( isset($_POST['cat_name']) && isset($_POST['cat_description'])){
     $category = htmlspecialchars(trim($_POST['cat_name']));
     $description = htmlspecialchars(trim($_POST['cat_description']));
@@ -30,13 +37,14 @@
       $alert = "Data is successfully added!";
     }
   }
-  include("partials/header.php");
-  include("partials/sidebar.php");
+  
 
   
 ?>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
+
+<!--    Formular to add new category   -->
 <div class="container-fluid p-5 mt-5">
   <h2 class ="py-3">Add new categoty</h1>
   <br><br>
@@ -79,8 +87,7 @@
     </form>
 </div>
 
-<!-- /////////////////////////////////////////////////////// -->
-
+<!-- ///////////    FOOTER    //////////// -->
 <?php
     include("partials/footer.php");
 ?>
