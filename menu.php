@@ -3,9 +3,10 @@
   //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   session_start();
   if(!isset( $_SESSION['benutzer_id'])){
-    //Wenn nicht eingeloggt dann muss erstmal einloggen
     header("Location:index.php");
   } 
   include("db_connect.php");
@@ -14,24 +15,23 @@
   include("partials/sidebar.php");
 
 
+  //Once delete button is clicked => make delete request database
   if( isset($_POST['del_item']) ){
     $id = $_POST['del_item'];
    
-    //SQL-Injection verhindern
     $id = mysqli_real_escape_string($connect, $id);
 
-    //2. SQL-Statement ausführen
     $sql = "DELETE 
             FROM products 
             WHERE id='$id'";
     
     $resultset = mysqli_query($connect, $sql);
-
   }
-
-
 ?>
 
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
+
+<!--    Navi of categories and table of products' details   -->
 <div class="text-end" style="padding: 100px 3% 0% 3%;">
 <a class="btn btn-primary" href="add_products.php" >
 						<i class="fa fa-plus"></i> Add Product </a>
@@ -125,10 +125,7 @@
   </div>
 </div>
 
- 
-
-<!-- /////////////////////////////////////////////////////// -->
-
+<!-- ///////////    FOOTER    //////////// -->
 <?php
     include("partials/footer.php");
 ?>
