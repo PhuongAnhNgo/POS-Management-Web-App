@@ -1,5 +1,5 @@
 # POS-Management-Web-App
-AZMIN is a responsive web-based POS (Point of Sales) Management System. The software is suitable for small businesses and can be further developed and/ or customized for specific businesses.
+JAZMIN is a responsive web-based POS (Point of Sales) Management System. The software is suitable for small businesses and can be further developed and/ or customized for specific businesses.
 
 ## Techstack
 PHP, CSS, HTML, Bootstrap 5, Javascript, SQL, AJAX, ChartJS
