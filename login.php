@@ -86,7 +86,7 @@ if( isset($_POST['benutzer']) && isset($_POST['passwort']) )
     if(!empty($fehlermeldung))
       echo "<p style=\"color:red\">$fehlermeldung</p>";
    ?>
-<!-- /////////////////////////////////////////////////////// -->
+<!-- //////////    Login Panel   //////////// -->
 <div id="container-login">
   <h1>Login</h1><br><br>
     <div class="row ">
