@@ -2,6 +2,9 @@
  //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   session_start();
   if(!isset( $_SESSION['benutzer_id'])){
     header("Location:index.php");
@@ -9,10 +12,11 @@
   include("partials/header.php");
   include("partials/sidebar.php");
 
-  include("db_connect.php");
+  include("db_connect.php"); //connect to database
 ?>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
+<!--    Show details and instructions   -->
 <div class="container-fluid py-5 px-5 my-4">
   <h1 class="py-2">Welcome to JAZMIN App!</h1>
   <h3>POS Management software developed by Phuong Anh Ngo. </h4>
@@ -55,12 +59,7 @@
 
 <footer class="text-center p-4 ">Copyright 2023 All rights reserved.</footer>
 
-
-
-
-
-<!-- /////////////////////////////////////////////////////// -->
-
+<!-- ///////////    FOOTER    //////////// -->
 <?php
     include("partials/footer.php");
 ?>
