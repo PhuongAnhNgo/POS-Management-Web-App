@@ -3,12 +3,15 @@
   //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   include("partials/header.php");
   include("partials/sidebar.php");
 
-  include("db_connect.php");
+  include("db_connect.php"); //connect to database
 
-  
+  //Once a year is choosen => return data of that year
   if(isset($_POST['year_data'])){
     $year_data = $_POST['year_data'];
   }else{
@@ -27,14 +30,14 @@
 
    $p = 0;
     for($i = 0; $i< count($month); $i++){
-        $y_axis[$month[$i]-1] = $sales[$p++];
-        
+        $y_axis[$month[$i]-1] = $sales[$p++];   
     }
 
 ?>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
 
+<!--    Show graph   -->
 <div class="p-5 m-5 text-center" >
 <div class="row pb-4">
     <div class="col-md-8">
