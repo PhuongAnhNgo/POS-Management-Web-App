@@ -1,11 +1,9 @@
-
 <?php
   //----------------------------------------------------------------------------
   //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
   //----------------------------------------------------------------------------
+  //Start session, add necessary files
   include("partials/header.php");
-
-  include("db_connect.php");
 ?>
 
 <!-- /////////////////////////////////////////////////////// -->
@@ -15,9 +13,7 @@
 <a id ="btn-logo" href="login.php" class="btn btn-lg btn-dark rounded-pill px-5" >Start</a>
 </div>
 
-
-<!-- /////////////////////////////////////////////////////// -->
-
+<!-- ///////////    FOOTER    //////////// -->
 <?php
     include("partials/footer.php");
 ?>
