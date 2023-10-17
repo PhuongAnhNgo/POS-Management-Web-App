@@ -1,7 +1,10 @@
 <?php
- //----------------------------------------------------------------------------
-  //--------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
-  //----------------------------------------------------------------------------
+ /*----------------------------------------------------------------------------
+   --------            SOFTWARE DEVELOPED BY PHUONG ANH NGO        ------------
+   ----------------------------------------------------------------------------*/
+
+  ///////////    HEADER + NAVBAR + PHP-Functions    //////////// 
+  //Start session, add necessary files
   session_start();
   if(!isset( $_SESSION['benutzer_id'])){
     header("Location:index.php");
@@ -9,10 +12,11 @@
   include("partials/header.php");
   include("partials/sidebar.php");
 
-  include("db_connect.php");
+  include("db_connect.php"); //connect to database
 
-  $alert ="";
+  $alert =""; //To return alert when error occurs
   
+  //Once formular is fully filled and submit => send request (add new data) to database
     if( isset($_POST['category_id']) && isset($_POST['name'])
         && isset($_POST['description']) && isset($_POST['price']) && isset($_POST['stock']) ){
         $category_id = $_POST['category_id'];
@@ -34,8 +38,9 @@
                 price = '$price',
                 status = '$stock'";
 
-    $resultset = mysqli_query($connect, $sql);
+    $resultset = mysqli_query($connect, $sql); 
 
+    //result
     if(!$resultset) {
       die("<p style=\"color:red\">" . mysqli_error($connect) . "</p>");
     }  
@@ -46,7 +51,9 @@
     
 ?>
 
-<!-- /////////////////////////////////////////////////////// -->
+<!-- /////////////////  HTML- PARTS  ////////////////////// -->
+
+<!--    Formular to add new product's infos   -->
 <div class="container-fluid p-5 my-5">
     <h2 class ="py-3">Add a new product</h2>
   <form action="add_products.php" method="post" class="form-container" style="width:50%;">
@@ -79,10 +86,11 @@
 <div class="input-group">
     <span class="input-group-text">Category</span>
     <select name="category_id"  class="form-select" aria-label="Default select example" required>
-      <?php
+      <!-- Loops each categogy to create table of options -->
+      <?php 
         $categories = $connect->query("SELECT id,name FROM categories ");
         while($row=$categories->fetch_assoc()):
-      ?> <!-- Loops each categogy to create table of options -->
+      ?> 
 
       <option  value="<?php echo $row['id']?>"><?php echo $row['name']?></option>
       <?php endwhile;?>
@@ -101,12 +109,7 @@
         echo "<p style=\"color:blue\"><i class=\"fa-solid fa-circle-check fa-beat fa-xl\" style=\"color: #006f1a;\"></i> $alert</p>"; ?>
 </div>
 
-
-
-
-
-<!-- /////////////////////////////////////////////////////// -->
-
+<!-- ///////////    FOOTER    //////////// -->
 <?php
     include("partials/footer.php");
 ?>
